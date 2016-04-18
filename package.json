@@ -1,6 +1,6 @@
 {
   "name": "ttl-map",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "simple ttl map with sub/pub functionality.",
   "main": "ttl-map.js",
   "directories": {

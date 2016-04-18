@@ -60,7 +60,10 @@ var ttlMap = function (config) {
       timeout = setTimeout(function () {
         expireEvents();
       }, evt.expires_at - now);
-    };
+    } else {
+      current_evt = null;
+      timeout = null;
+    }
   };
 
   var addEvent = function (evt) {
@@ -106,7 +109,7 @@ var ttlMap = function (config) {
       };
     }
 
-    if (timeout && evt.expires_at >= current_evt.expires_at) {
+    if (evt && current_evt && evt.expires_at >= current_evt.expires_at) {
       return;
     }
 
@@ -140,14 +143,22 @@ var ttlMap = function (config) {
       var now = Date.now();
 
       if (evt.expires_at < now)
-        return null;
-      return evt.value || null;
+        return undefined;
+      return evt.value;
     },
-    size: function () {
-      return sorted_events_list.length;
+    size: function (accurate) {
+      var array = sorted_events_list;
+      if (accurate) {
+        var now = Date.now();
+        // filter expired results for exact precision
+        var array = sorted_events_list.filter(function (evt) {
+          return evt.expires_at > now;
+        });
+      };
+      return array.length;
     },
-    isEmpty: function () {
-      return this.size() === 0;
+    isEmpty: function (accurate) {
+      return this.size(accurate) === 0;
     },
     subscribe: function (sub) {
       params.subscribers.push(sub);

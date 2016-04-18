@@ -1,0 +1,38 @@
+{
+  "name": "ttl-map",
+  "version": "0.0.0",
+  "description": "simple ttl map with sub/pub functionality.",
+  "main": "ttl-map.js",
+  "directories": {
+    "test": "tests"
+  },
+  "scripts": {
+    "test": "mocha tests/*"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/talmobi/ttl-map.git"
+  },
+  "keywords": [
+    "ttl",
+    "map",
+    "hashmap",
+    "cache",
+    "changes",
+    "pub",
+    "sub",
+    "in",
+    "memory",
+    "simple",
+    "basic"
+  ],
+  "author": "talmobi <talmo.christian@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/talmobi/ttl-map/issues"
+  },
+  "homepage": "https://github.com/talmobi/ttl-map#readme",
+  "devDependencies": {
+    "mocha": "^2.4.5"
+  }
+}
